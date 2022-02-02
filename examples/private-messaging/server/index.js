@@ -77,7 +77,24 @@ io.on("connection", (socket) => {
   });
 
   // notify users upon disconnection
-  socket.on("disconnect", async () => {
+  // socket.on("disconnect", async () => {
+  //   const matchingSockets = await io.in(socket.userID).allSockets();
+  //   const isDisconnected = matchingSockets.size === 0;
+  //   if (isDisconnected) {
+  //     // notify other users
+  //     socket.broadcast.emit("user disconnected", socket.userID);
+  //     // update the connection status of the session
+  //     sessionStore.saveSession(socket.sessionID, {
+  //       userID: socket.userID,
+  //       username: socket.username,
+  //       connected: false,
+  //     });
+  //   }
+  // });
+
+  // notify users upon disconnection
+   // ...
+   socket.on("disconnect", async () => {
     const matchingSockets = await io.in(socket.userID).allSockets();
     const isDisconnected = matchingSockets.size === 0;
     if (isDisconnected) {
